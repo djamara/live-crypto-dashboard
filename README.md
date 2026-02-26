@@ -1,73 +1,56 @@
-# React + TypeScript + Vite
+# Crypto Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **real-time cryptocurrency dashboard** built with **React**, **Vite**, and **TanStack Query**, demonstrating senior-level front-end skills including live data fetching, charting, state management, and persistent favorites.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- **Live Crypto Prices**: Fetches top 10 cryptocurrencies using the CoinGecko API, refreshing automatically every 15 seconds.
+- **Price Change Tracking**: catch the changes in the data in display it
+- **Interactive Charts**: View 7-day sparkline charts for individual coins.
+- **Favorites System**: Add coins to favorites using a heart button; favorites are persisted in `Fast API backend`. (--- Not yet done because I can't deploy backend--)
+- **Routing**: Navigate between the main dashboard, coin detail pages, and favorites page using React Router.
+- **Responsive UI**: Mobile-friendly design using Tailwind CSS.
+- **Clean State Management**: Server state handled with **TanStack Query**, client state managed via React hooks.
+- **Professional UX Enhancements**:
+  - Loading spinners during API requests
+  - Last updated timestamps
+  - Subtle card highlights for changes
+  - Smooth hover effects
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📂 Project Structure
+- `services/coinservice.ts`: All API requests to CoinGecko centralized here.
+- `components/charts/PriceChart.tsx`: Displays sparkline charts for coins.
+- `components/layout/Loading.tsx`: Display message when querying data from backend
+- `components/layout/Navbar.tsx`: Display the menu
+- `pages/`: Main app pages (Dashboard, Coin Detail, Favorites).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## ⚙️ Technologies Used
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **React** (Functional Components + Hooks)
+- **Vite** (Fast development build tool)
+- **TanStack Query** (Server state management, caching, background refetch)
+- **React Router v6** (Routing)
+- **Recharts** (Charts)
+- **Tailwind CSS** (Responsive styling)
+- **CoinGecko API** (Real-time cryptocurrency data)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📌 Installation
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Clone the repository
+git clone https://github.com/djamara/live-crypto-dashboard.git
+cd live-crypto-dashboard
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
